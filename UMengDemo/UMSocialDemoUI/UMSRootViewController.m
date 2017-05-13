@@ -273,11 +273,4 @@ static NSString *UMS_NAV_SPEC_PREFIX = @"版本号：v6.5\n";
     UIGraphicsEndImageContext();
     return image;
 }
-
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    self.navigationItem.title = @"U-Share产品Demo";
-    //self.tabBarItem.title = @"UShare";
-}
 @end

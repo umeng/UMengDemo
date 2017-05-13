@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		17039F371EC722B000D5A594 /* UMShare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17039F361EC722B000D5A594 /* UMShare.framework */; };
 		17A1932C1E9E15900020F491 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17A1932B1E9E15900020F491 /* UserNotifications.framework */; };
 		17A193391E9E17F40020F491 /* UMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17A193371E9E17F40020F491 /* UMessageViewController.m */; };
 		17A1933A1E9E17F40020F491 /* UMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17A193381E9E17F40020F491 /* UMessageViewController.xib */; };
@@ -87,7 +88,6 @@
 		E59608091E9DC02600C9813C /* libSocialYiXin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E59607CC1E9DC02500C9813C /* libSocialYiXin.a */; };
 		E596080A1E9DC02600C9813C /* libYixinSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E59607CD1E9DC02500C9813C /* libYixinSDK.a */; };
 		E596080B1E9DC02600C9813C /* libSocialYouDao.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E59607D21E9DC02500C9813C /* libSocialYouDao.a */; };
-		E596080C1E9DC02600C9813C /* UMSocialCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E59607D41E9DC02500C9813C /* UMSocialCore.framework */; };
 		E596080D1E9DC02600C9813C /* libUMSocialCloudShare.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E59607D61E9DC02500C9813C /* libUMSocialCloudShare.a */; };
 		E596080E1E9DC02600C9813C /* libUMSocialLog.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E59607D71E9DC02500C9813C /* libUMSocialLog.a */; };
 		E596080F1E9DC02600C9813C /* UMSocialSDKPromptResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E59607D81E9DC02500C9813C /* UMSocialSDKPromptResources.bundle */; };
@@ -103,6 +103,7 @@
 
 /* Begin PBXFileReference section */
 		1700DB011E9E14B300E9AF25 /* UMengDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UMengDemo.entitlements; sourceTree = "<group>"; };
+		17039F361EC722B000D5A594 /* UMShare.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UMShare.framework; sourceTree = "<group>"; };
 		17A1932B1E9E15900020F491 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		17A193361E9E17F40020F491 /* UMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMessageViewController.h; sourceTree = "<group>"; };
 		17A193371E9E17F40020F491 /* UMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMessageViewController.m; sourceTree = "<group>"; };
@@ -287,7 +288,6 @@
 		E59607D01E9DC02500C9813C /* YXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YXApiObject.h; sourceTree = "<group>"; };
 		E59607D21E9DC02500C9813C /* libSocialYouDao.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSocialYouDao.a; sourceTree = "<group>"; };
 		E59607D31E9DC02500C9813C /* UMSocialYouDaoHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialYouDaoHandler.h; sourceTree = "<group>"; };
-		E59607D41E9DC02500C9813C /* UMSocialCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UMSocialCore.framework; sourceTree = "<group>"; };
 		E59607D61E9DC02500C9813C /* libUMSocialCloudShare.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUMSocialCloudShare.a; sourceTree = "<group>"; };
 		E59607D71E9DC02500C9813C /* libUMSocialLog.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUMSocialLog.a; sourceTree = "<group>"; };
 		E59607D81E9DC02500C9813C /* UMSocialSDKPromptResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = UMSocialSDKPromptResources.bundle; sourceTree = "<group>"; };
@@ -314,6 +314,7 @@
 				17A1932C1E9E15900020F491 /* UserNotifications.framework in Frameworks */,
 				A99F943F1E70F1A30034FEF7 /* libc++.tbd in Frameworks */,
 				A99F943D1E70F18E0034FEF7 /* libstdc++.tbd in Frameworks */,
+				17039F371EC722B000D5A594 /* UMShare.framework in Frameworks */,
 				E59608011E9DC02500C9813C /* TwitterCore.framework in Frameworks */,
 				E59607FD1E9DC02500C9813C /* libSocialTencentWeibo.a in Frameworks */,
 				E59608081E9DC02600C9813C /* libSocialWhatsApp.a in Frameworks */,
@@ -332,7 +333,6 @@
 				E596080B1E9DC02600C9813C /* libSocialYouDao.a in Frameworks */,
 				E59607F91E9DC02500C9813C /* libSocialQQ.a in Frameworks */,
 				E59607F81E9DC02500C9813C /* libSocialPocket.a in Frameworks */,
-				E596080C1E9DC02600C9813C /* UMSocialCore.framework in Frameworks */,
 				E59607E71E9DC02500C9813C /* Bolts.framework in Frameworks */,
 				E59607EE1E9DC02500C9813C /* libSocialGooglePlus.a in Frameworks */,
 				E59608051E9DC02500C9813C /* libVKSdk.a in Frameworks */,
@@ -527,8 +527,8 @@
 		E596072C1E9DC02500C9813C /* UMSocial */ = {
 			isa = PBXGroup;
 			children = (
+				17039F361EC722B000D5A594 /* UMShare.framework */,
 				E596072D1E9DC02500C9813C /* SocialLibraries */,
-				E59607D41E9DC02500C9813C /* UMSocialCore.framework */,
 				E59607D51E9DC02500C9813C /* UMSocialSDKPlugin */,
 				E59607D91E9DC02500C9813C /* UMSocialUI */,
 			);
@@ -1144,6 +1144,7 @@
 					"$(PROJECT_DIR)/UMengDemo/UMComponents",
 					"$(PROJECT_DIR)/UMengDemo/UMComponents/UMSocial/**",
 					"$(PROJECT_DIR)/UMengDemo",
+					"$(PROJECT_DIR)/UMengDemo/UMComponents/UMSocial",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				INFOPLIST_FILE = UMengDemo/Info.plist;
@@ -1175,6 +1176,7 @@
 					"$(PROJECT_DIR)/UMengDemo/UMComponents",
 					"$(PROJECT_DIR)/UMengDemo/UMComponents/UMSocial/**",
 					"$(PROJECT_DIR)/UMengDemo",
+					"$(PROJECT_DIR)/UMengDemo/UMComponents/UMSocial",
 				);
 				INFOPLIST_FILE = UMengDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

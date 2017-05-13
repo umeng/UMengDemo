@@ -7,13 +7,13 @@
 //
 
 #import "UMSPlatformListViewController.h"
-#import <UMSocialCore/UMSocialCore.h>
+#import <UMShare/UMShare.h>
 #import "UMSAuthDetailViewController.h"
 #import <UShareUI/UMSocialUIUtility.h>
 #import "UMShareTypeViewController.h"
 
 #ifdef UM_Swift
-#import "UMengDemo-Swift.h"
+#import "UMSocialDemo-Swift.h"
 #endif
 
 

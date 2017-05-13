@@ -8,7 +8,7 @@
 
 #import <UMCommon/UMCommon.h>
 #import <UMAnalytics/MobClick.h>
-#import <UMSocialCore/UMSocialCore.h>
+#import <UMShare/UMShare.h>
 #import <UMPush/UMessage.h>
 #import <UserNotifications/UserNotifications.h>
 

@@ -10,7 +10,7 @@
 #import <UShareUI/UShareUI.h>
 
 #ifdef UM_Swift
-#import "UMengDemo-Swift.h"
+#import "UMSocialDemo-Swift.h"
 #endif
 
 static NSString* const UMS_Title = @"【友盟+】社会化组件U-Share";

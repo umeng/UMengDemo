@@ -11,7 +11,7 @@
 #import "UMShareTypeViewController.h"
 
 #ifdef UM_Swift
-#import "UMengDemo-Swift.h"
+#import "UMSocialDemo-Swift.h"
 #endif
 
 @interface UMShareViewController ()<UMSocialShareMenuViewDelegate>
