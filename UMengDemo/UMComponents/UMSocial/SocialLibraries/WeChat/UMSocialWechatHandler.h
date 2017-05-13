@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <UMSocialCore/UMSocialCore.h>
+#import <UMShare/UMShare.h>
 
 @interface UMSocialWechatHandler : UMSocialHandler
 

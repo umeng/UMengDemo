@@ -5,7 +5,7 @@
 //  Copyright © 2016年 cloudayc. All rights reserved.
 //
 
-#import <UMSocialCore/UMSocialCore.h>
+#import <UMShare/UMShare.h>
 
 @interface UMSocialDingDingHandler : UMSocialHandler
 

@@ -6,7 +6,7 @@
 //  Copyright © 2016年 dongjianxiong. All rights reserved.
 //
 
-#import <UMSocialCore/UMSocialCore.h>
+#import <UMShare/UMShare.h>
 
 @interface UMSocialQQHandler : UMSocialHandler
 

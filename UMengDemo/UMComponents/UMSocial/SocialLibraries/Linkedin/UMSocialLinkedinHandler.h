@@ -7,7 +7,7 @@
 //  Copyright © 2016年 dongjianxiong. All rights reserved.
 //
 
-#import <UMSocialCore/UMSocialCore.h>
+#import <UMShare/UMShare.h>
 
 /**
  * 领英分享权限枚举

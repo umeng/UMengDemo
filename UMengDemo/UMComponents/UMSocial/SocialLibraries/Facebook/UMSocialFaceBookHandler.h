@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <UMSocialCore/UMSocialCore.h>
+#import <UMShare/UMShare.h>
 
 @interface UMSocialFacebookHandler : UMSocialHandler
 

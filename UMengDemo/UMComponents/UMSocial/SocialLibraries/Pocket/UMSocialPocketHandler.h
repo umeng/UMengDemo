@@ -6,7 +6,7 @@
 //  Copyright © 2016年 UMeng. All rights reserved.
 //
 
-#import <UMSocialCore/UMSocialCore.h>
+#import <UMShare/UMShare.h>
 
 @interface UMSocialPocketHandler : UMSocialHandler
 
