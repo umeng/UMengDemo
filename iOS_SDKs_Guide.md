@@ -573,7 +573,7 @@ if([response.actionIdentifier isEqualToString:@"*****你定义的action id****"]
 
 
 ```objective-c
-[UMessage addTag:@"男"
+[UMessage addTags:@"男"
 response:^(id responseObject, NSInteger remain, NSError *error) {
 //add your codes
 }];
@@ -586,7 +586,7 @@ response:^(id responseObject, NSInteger remain, NSError *error) {
 
 
 ```objective-c
-[UMessage removeTag:@"男"
+[UMessage removeTags:@"男"
 response:^(id responseObject, NSInteger remain, NSError *error) {
 //add your codes            
 }];
@@ -604,15 +604,6 @@ response:^(id responseObject, NSInteger remain, NSError *error) {
 }];
 
 ```
-###重置tag列表
->示例： 重置tag列表
-
-
-```objective-c
-[UMessage removeAllTags:^(id responseObject, NSInteger remain, NSError *error) {
-
-}];
-
 ```
 >注意 
 

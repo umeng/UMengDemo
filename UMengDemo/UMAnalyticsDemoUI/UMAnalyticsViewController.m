@@ -79,7 +79,11 @@
 }
 -(void)eventButtonClick{
     
+#ifdef UM_Swift
+    [UMAnalyticsSwiftInterface eventWithEventId:@"umeng_event"];
+#else
     [MobClick event:@"umeng_event"];
+#endif
     
 }
 -(void)eventAButtonClick{
@@ -87,7 +91,11 @@
                           @"popular", @"type", @"JJLin", @"artist"
                           , @"24", @"width", @"43", @"length", @"9.99", @"price"
                           , @199, @"rate", nil];
+#ifdef UM_Swift
+    [UMAnalyticsSwiftInterface eventWithEventId:@"ts" attributes:dict];
+#else
     [MobClick event:@"ts" attributes:dict];
+#endif
     
 }
 -(void)errorButtonClick{
@@ -96,11 +104,19 @@
     
 }
 -(void)signInButtonClick{
+#ifdef UM_Swift
+    [UMAnalyticsSwiftInterface profileSignInWithPUIDWithPuid:@"umeng@456"];
+#else
     [MobClick profileSignInWithPUID:@"umeng@456"];
+#endif
     
 }
 -(void)signOffButtonClick{
+#ifdef UM_Swift
+    [UMAnalyticsSwiftInterface profileSignOff];
+#else
     [MobClick profileSignOff];
+#endif
 
 }
 -(void)dplusButtonClick{
@@ -126,14 +142,20 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
+#ifdef UM_Swift
+    [UMAnalyticsSwiftInterface beginLogPageViewWithPageName:@"OnePage"];
+#else
     [MobClick beginLogPageView:@"OnePage"];
+#endif
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    
+#ifdef UM_Swift
+    [UMAnalyticsSwiftInterface endLogPageViewWithPageName:@"OnePage"];
+#else
     [MobClick endLogPageView:@"OnePage"];
+#endif
 }
 @end

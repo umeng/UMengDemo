@@ -82,35 +82,58 @@
 -(void)registerButtonClick{
     NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys: @"um", @"name", @"123"
                          , @"age",@"66",@"width", nil];
+#ifdef UM_Swift
+    [UMDplusMobClickSwiftInterface registerSuperPropertyWithProperty:dic];
+#else
     [DplusMobClick registerSuperProperty:dic];
+#endif
     NSLog(@"register");
     
     
 }
 -(void)unregisterButtonClick{
+#ifdef UM_Swift
+    [UMDplusMobClickSwiftInterface unregisterSuperPropertyWithPropertyName:@"name"];
+#else
     [DplusMobClick unregisterSuperProperty:@"name"];
+#endif
     NSLog(@"del name");
     
 }
 -(void)getSuperButtonClick{
+#ifdef UM_Swift
+    NSDictionary *getDplus = [UMDplusMobClickSwiftInterface getSuperProperties];
+#else
     NSDictionary *getDplus= [DplusMobClick getSuperProperties];
+#endif
     NSLog(@"getSuper: %@",getDplus);
     
 }
 -(void)clearSuperButtonClick{
+#ifdef UM_Swift
+    [UMDplusMobClickSwiftInterface clearSuperProperties];
+#else
     [DplusMobClick clearSuperProperties];
+#endif
     NSLog(@"clearSuper");
     
 }
 -(void)trackaButtonClick{
+#ifdef UM_Swift
+    [UMDplusMobClickSwiftInterface trackWithEventName:@"eventDplusa"];
+#else
     [DplusMobClick track:@"eventDplusa"];
+#endif
     
 }
 -(void)trackbButtonClick{
     NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys: @"66", @"length", @"dplusvalue"
                          , @"dpluskey", nil];
-    
+#ifdef UM_Swift
+    [UMDplusMobClickSwiftInterface trackWithEventName:@"eventDplusb" property:dic];
+#else
     [DplusMobClick track:@"eventDplusb" property:dic];
+#endif
     
 }
 

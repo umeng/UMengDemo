@@ -21,7 +21,7 @@ static NSString *UMS_NAV_TBL_CELL = @"UMS_NAV_TBL_CELL";
 static NSUInteger UMS_TIP_BUTTON_TAG = 99001;
 
 static NSUInteger specNumberLines = 0;
-static NSString *UMS_NAV_SPEC_PREFIX = @"版本号：v6.5\n";
+static NSString *UMS_NAV_SPEC_PREFIX = @"版本号：v6.6\n";
 
 
 
@@ -272,5 +272,12 @@ static NSString *UMS_NAV_SPEC_PREFIX = @"版本号：v6.5\n";
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return image;
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.navigationItem.title = @"U-Share产品Demo";
+    //self.tabBarItem.title = @"UShare";
 }
 @end

@@ -83,7 +83,21 @@
 
 - (IBAction)Addtag:(id)sender {
     
-    [UMessage addTag:[self getTagsWithString:self.tagtext.text]
+#ifdef UM_Swift
+    [UMessageSwiftInterface addTagWithTag:[self getTagsWithString:self.tagtext.text] response:^(id _Nonnull responseObject, NSInteger remain, NSError * _Nonnull error) {
+        [self.tagnum setText:[NSString stringWithFormat:@"%ld",(long)remain]];
+        [self.tagnum setNeedsDisplay];
+        if(responseObject)
+        {
+            [self showMessageAlert:@"添加成功！"];
+        }
+        else
+        {
+            [self showMessageAlert:error.localizedDescription];
+        }
+    }];
+#else
+    [UMessage addTags:[self getTagsWithString:self.tagtext.text]
             response:^(id responseObject, NSInteger remain, NSError *error) {
                 [self.tagnum setText:[NSString stringWithFormat:@"%ld",(long)remain]];
                 [self.tagnum setNeedsDisplay];
@@ -97,10 +111,26 @@
                 }
                 
             }];
+#endif
 }
 
 - (IBAction)RemoveTag:(id)sender {
-    [UMessage removeTag:[self getTagsWithString:self.tagtext.text]
+
+#ifdef UM_Swift
+    [UMessageSwiftInterface removeTagWithTag:[self getTagsWithString:self.tagtext.text] response:^(id _Nonnull responseObject, NSInteger remain, NSError * _Nonnull error) {
+        [self.tagnum setText:[NSString stringWithFormat:@"%ld",(long)remain]];
+        [self.tagnum setNeedsDisplay];
+        if(responseObject)
+        {
+            [self showMessageAlert:@"删除成功！"];
+        }
+        else
+        {
+            [self showMessageAlert:error.localizedDescription];
+        }
+    }];
+#else
+    [UMessage deleteTags:[self getTagsWithString:self.tagtext.text]
                response:^(id responseObject, NSInteger remain, NSError *error) {
                    [self.tagnum setText:[NSString stringWithFormat:@"%ld",(long)remain]];
                    [self.tagnum setNeedsDisplay];
@@ -114,21 +144,37 @@
                    }
                    
                }];
+#endif
 }
 
 - (IBAction)ResetTag:(id)sender {
-    [UMessage removeAllTags:^(id responseObject, NSInteger remain, NSError *error) {
-        [self.tagnum setText:[NSString stringWithFormat:@"%ld",(long)remain]];
-        [self.tagnum setNeedsDisplay];
-        if(responseObject)
-        {
-            [self showMessageAlert:@"重置成功！"];
-        }
-        else
-        {
-            [self showMessageAlert:error.localizedDescription];
-        }
-    }];
+#ifdef UM_Swift
+//    [UMessageSwiftInterface removeAllTagsWithResponse:^(id _Nonnull responseObject, NSInteger remain, NSError * _Nonnull error) {
+//        [self.tagnum setText:[NSString stringWithFormat:@"%ld",(long)remain]];
+//        [self.tagnum setNeedsDisplay];
+//        if(responseObject)
+//        {
+//            [self showMessageAlert:@"重置成功！"];
+//        }
+//        else
+//        {
+//            [self showMessageAlert:error.localizedDescription];
+//        }
+//    }];
+#else
+//    [UMessage removeAllTags:^(id responseObject, NSInteger remain, NSError *error) {
+//        [self.tagnum setText:[NSString stringWithFormat:@"%ld",(long)remain]];
+//        [self.tagnum setNeedsDisplay];
+//        if(responseObject)
+//        {
+//            [self showMessageAlert:@"重置成功！"];
+//        }
+//        else
+//        {
+//            [self showMessageAlert:error.localizedDescription];
+//        }
+//    }];
+#endif
 }
 
 
@@ -163,6 +209,18 @@
 - (IBAction)AddAlias:(id)sender {
     NSLog(@"self nameTextField [%@]",self.nametext.text);
     
+#ifdef UM_Swift
+    [UMessageSwiftInterface setAliasWithName:self.nametext.text type:[self.selecttype titleForState:UIControlStateNormal] response:^(id _Nonnull responseObject, NSError * _Nonnull error) {
+        if(responseObject)
+        {
+            [self showMessageAlert:@"绑定成功！"];
+        }
+        else
+        {
+            [self showMessageAlert:error.localizedDescription];
+        }
+    }];
+#else
     [UMessage setAlias:self.nametext.text type:[self.selecttype titleForState:UIControlStateNormal] response:^(id responseObject, NSError *error) {
         if(responseObject)
         {
@@ -173,10 +231,23 @@
             [self showMessageAlert:error.localizedDescription];
         }
     }];
+#endif
 }
 - (IBAction)RemoveAlias:(id)sender {
     NSLog(@"self nameTextField [%@]",self.nametext.text);
     
+#ifdef UM_Swift
+    [UMessageSwiftInterface removeAliasWithName:self.nametext.text type:[self.selecttype titleForState:UIControlStateNormal] response:^(id _Nonnull responseObject, NSError * _Nonnull error) {
+        if(responseObject)
+        {
+            [self showMessageAlert:@"删除成功！"];
+        }
+        else
+        {
+            [self showMessageAlert:error.localizedDescription];
+        }
+    }];
+#else
     [UMessage removeAlias:self.nametext.text type:[self.selecttype titleForState:UIControlStateNormal] response:^(id responseObject, NSError *error) {
         if(responseObject)
         {
@@ -187,6 +258,7 @@
             [self showMessageAlert:error.localizedDescription];
         }
     }];
+#endif
 }
 
 - (NSArray *)getTagsWithString:(NSString *)string

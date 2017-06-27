@@ -10,7 +10,7 @@
 #import <UShareUI/UMSocialUIUtility.h>
 
 #ifdef UM_Swift
-#import "UMSocialDemo-Swift.h"
+#import "UMengDemo-Swift.h"
 #endif
 
 

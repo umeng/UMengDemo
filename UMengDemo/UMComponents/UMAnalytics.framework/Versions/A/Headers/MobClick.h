@@ -2,12 +2,11 @@
 //  MobClick.h
 //  Analytics
 //
-//  Copyright (C) 2010-2011 Umeng.com . All rights reserved.
+//  Copyright (C) 2010-2017 Umeng.com . All rights reserved.
 
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 
-#define XcodeAppVersion [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
 typedef void(^CallbackBlock)();
 
 /**
@@ -34,13 +33,6 @@ typedef NS_ENUM (NSUInteger, eScenarioType)
  @return void.
  */
 + (void)setScenarioType:(eScenarioType)eSType;
-
-/** 设置app版本号。由于历史原因需要和xcode3工程兼容,友盟提取的是Build号(CFBundleVersion)，
-    如果需要和App Store上的版本一致,请调用此方法。
- @param appVersion 版本号，例如设置成`XcodeAppVersion`.
- @return void.
-*/
-+ (void)setAppVersion:(NSString *)appVersion;
 
 /** 开启CrashReport收集, 默认YES(开启状态).
  @param value 设置为NO,可关闭友盟CrashReport收集功能.
@@ -214,27 +206,22 @@ typedef NS_ENUM (NSUInteger, eScenarioType)
 + (void)setCrashCBBlock:(CallbackBlock)cbBlock;
 
 #pragma mark REMOVED APIs -
-/** 因业务调整，结构化事件暂时不可用。
- @param  keyPath 字符串数组代表的结构化事件路径，其长度最大为8，不能使用unicode 48以内的字符，keyPath[0]必须在网站注册事件ID.
- @param  value 事件的数值
- @param  (optional) label 标签
- @return void.
- */
-+ (void)event:(NSArray *)keyPath value:(int)value label:(NSString *)label API_DEPRECATED_WITH_REPLACEMENT("ERROR, the API is invalid.", ios(2.0, 5.0));
 
-/** 设置是否打开console和对日志信息功能已经统一迁移到基础库中的UMConfigure中完成.
- @param value 设置为YES, umeng SDK 会将日志信息做加密处理
- @return void.
+/** 组件化的友盟SDK产品，设置是否打开console和对日志信息功能已经统一迁移到UMCommon库中UMConfigure类中完成.
  */
 + (void)setEncryptEnabled:(BOOL)value  API_DEPRECATED_WITH_REPLACEMENT("Please use [UMConfigure setEncryptEnabled:YES/NO]", ios(2.0, 5.0));
-
 + (void)setLogEnabled:(BOOL)value API_DEPRECATED_WITH_REPLACEMENT("Please use [UMConfigure setLogEnabled:YES/NO]", ios(2.0, 5.0));
 
-/** iOS 的发送策略已经调整，并不需要开发者设置，日志数据可以在app切到后台时统一发送。
- @param
- @return void.
+/** 组件化的友盟SDK产品，统一了app的版本号为shortversion,不再使用历史遗留的Build号(CFBundleVersion)，开发者直接删除该API.
  */
-+ (void)setReportPolicy:(int)ePolicy API_DEPRECATED_WITH_REPLACEMENT("@UMLOG: ERROR, the API is invalid.", ios(2.0, 5.0));
-+ (void)setLogSendInterval:(double)second API_DEPRECATED_WITH_REPLACEMENT("@UMLOG: ERROR, the API is invalid.", ios(2.0, 5.0));
++ (void)setAppVersion:(NSString *)appVersion API_UNAVAILABLE(ios);
 
+/** 新版iOS 的发送策略已经调整，并不需要开发者设置，日志数据可以在app切到后台时统一发送。
+ */
++ (void)setReportPolicy:(int)ePolicy API_UNAVAILABLE(ios);
++ (void)setLogSendInterval:(double)second API_UNAVAILABLE(ios);
+
+/** 因业务调整，结构化事件暂时不可用。
+ */
++ (void)event:(NSArray *)keyPath value:(int)value label:(NSString *)label API_UNAVAILABLE(ios);
 @end

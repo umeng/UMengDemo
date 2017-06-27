@@ -35,30 +35,44 @@
     
     // init all components of umeng
     // [UMConfigure setEncryptEnabled:YES]; // optional: 设置对发送的日志加密传输
+#ifdef UM_Swift
+    [UMCommonSwiftInterface setLogEnabledWithBFlag:YES];
+    [UMCommonSwiftInterface initWithAppkeyWithAppKey:UMENG_APPKEY channel:@"App Store"];
+#else
     [UMConfigure setLogEnabled:YES];    // debug: only for console log, must be remove in release version
     [UMConfigure initWithAppkey:UMENG_APPKEY channel:@"App Store"]; // required
+#endif
     
     
     // Analytics's setting
-    [MobClick setAppVersion:XcodeAppVersion];   // optional:
+//    [MobClick setAppVersion:XcodeAppVersion];   // optional:
 //  [MobClick setScenarioType:E_UM_GAME];       // optional: 仅适用于游戏场景，应用统计不用设置
     
     
     // Share's setting
-    [self setupSharePlatforms];   // required: setting platforms on demand
-    
+    [self setupUSharePlatforms];   // required: setting platforms on demand
+    [self setupUShareSettings];
     
     // Push's basic setting
     UMessageRegisterEntity * entity = [[UMessageRegisterEntity alloc] init];
     //type是对推送的几个参数的选择，可以选择一个或者多个。默认是三个全部打开，即：声音，弹窗，角标
     entity.types = UMessageAuthorizationOptionBadge|UMessageAuthorizationOptionAlert;
     [UNUserNotificationCenter currentNotificationCenter].delegate=self;
+#ifdef UM_Swift
+    [UMessageSwiftInterface registerForRemoteNotificationsWithLaunchOptionsWithLaunchOptions:launchOptions entity:entity completionHandler:^(BOOL granted, NSError * _Nullable error) {
+        if (granted) {
+        }else
+        {
+        }
+    }];
+#else
     [UMessage registerForRemoteNotificationsWithLaunchOptions:launchOptions Entity:entity completionHandler:^(BOOL granted, NSError * _Nullable error) {
         if (granted) {
         }else
         {
         }
     }];
+#endif
     
     // optional: 若需要使用Push的高级功能，请参考如下函数实现。
     //[self setupPushAdvanceFunctionWithLaunchOptions:launchOptions];
@@ -74,9 +88,14 @@
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
+#ifdef UM_Swift
+    [UMessageSwiftInterface setAutoAlertWithValue:NO];
+    [UMessageSwiftInterface didReceiveRemoteNotificationWithUserInfo:userInfo];
+#else
     //关闭友盟自带的弹出框
     [UMessage setAutoAlert:NO];
     [UMessage didReceiveRemoteNotification:userInfo];
+#endif
     
 //    self.userInfo = userInfo;
 //    //定制自定的的弹出框
@@ -97,11 +116,16 @@
 -(void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler{
     NSDictionary * userInfo = notification.request.content.userInfo;
     if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
+#ifdef UM_Swift
+        [UMessageSwiftInterface setAutoAlertWithValue:NO];
+        [UMessageSwiftInterface didReceiveRemoteNotificationWithUserInfo:userInfo];
+#else
         //应用处于前台时的远程推送接受
         //关闭友盟自带的弹出框
         [UMessage setAutoAlert:NO];
         //必须加这句代码
         [UMessage didReceiveRemoteNotification:userInfo];
+#endif
         
     }else{
         //应用处于前台时的本地推送接受
@@ -113,9 +137,13 @@
 -(void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler{
     NSDictionary * userInfo = response.notification.request.content.userInfo;
     if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
+#ifdef UM_Swift
+        [UMessageSwiftInterface didReceiveRemoteNotificationWithUserInfo:userInfo];
+#else
         //应用处于后台时的远程推送接受
         //必须加这句代码
         [UMessage didReceiveRemoteNotification:userInfo];
+#endif
         
     }else{
         //应用处于后台时的本地推送接受
@@ -180,17 +208,31 @@
     return result;
 }
 
-/**
- 配置一些平台日志等UShare特性
- 配置UShare的相关平台的初始化appid，appSecret及redirectURL
- */
-- (void)setupSharePlatforms
+- (void)setupUShareSettings
 {
-    // 打开图片水印
+    /*
+     * 打开图片水印
+     */
     //[UMSocialGlobal shareInstance].isUsingWaterMark = YES;
-    [UMSocialGlobal shareInstance].isClearCacheWhenGetUserInfo = NO;
     
-    /* 设置微信的appKey和appSecret */
+    /*
+     * 关闭强制验证https，可允许http图片分享，但需要在info.plist设置安全域名
+     <key>NSAppTransportSecurity</key>
+     <dict>
+     <key>NSAllowsArbitraryLoads</key>
+     <true/>
+     </dict>
+     */
+    //[UMSocialGlobal shareInstance].isUsingHttpsWhenShareContent = NO;
+    
+}
+
+- (void)setupUSharePlatforms
+{
+    /*
+     设置微信的appKey和appSecret
+     [微信平台从U-Share 4/5升级说明]http://dev.umeng.com/social/ios/%E8%BF%9B%E9%98%B6%E6%96%87%E6%A1%A3#1_1
+     */
     [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatSession appKey:@"wxdc1e388c3822c80b" appSecret:@"3baf1193c85774b3fd9d18447d76cab0" redirectURL:nil];
     /*
      * 移除相应平台的分享，如微信收藏
@@ -199,17 +241,22 @@
     
     /* 设置分享到QQ互联的appID
      * U-Share SDK为了兼容大部分平台命名，统一用appKey和appSecret进行参数设置，而QQ平台仅需将appID作为U-Share的appKey参数传进即可。
+     100424468.no permission of union id
+     [QQ/QZone平台集成说明]http://dev.umeng.com/social/ios/%E8%BF%9B%E9%98%B6%E6%96%87%E6%A1%A3#1_3
      */
-    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_QQ appKey:@"1105821097"/*设置QQ平台的appID*/  appSecret:nil redirectURL:@"http://mobile.umeng.com/social"];
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_QQ appKey:@"1105821097"/*设置QQ平台的appID*/  appSecret:nil redirectURL:nil];
     
-    /* 设置新浪的appKey和appSecret */
+    /*
+     设置新浪的appKey和appSecret
+     [新浪微博集成说明]http://dev.umeng.com/social/ios/%E8%BF%9B%E9%98%B6%E6%96%87%E6%A1%A3#1_2
+     */
     [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Sina appKey:@"3921700954"  appSecret:@"04b48b094faeb16683c32669824ebdad" redirectURL:@"https://sns.whalecloud.com/sina2/callback"];
     
     /* 钉钉的appKey */
     [[UMSocialManager defaultManager] setPlaform: UMSocialPlatformType_DingDing appKey:@"dingoalmlnohc0wggfedpk" appSecret:nil redirectURL:nil];
     
     /* 支付宝的appKey */
-    [[UMSocialManager defaultManager] setPlaform: UMSocialPlatformType_AlipaySession appKey:@"2015111700822536" appSecret:nil redirectURL:@"http://mobile.umeng.com/social"];
+    [[UMSocialManager defaultManager] setPlaform: UMSocialPlatformType_AlipaySession appKey:@"2015111700822536" appSecret:nil redirectURL:nil];
     
     
     /* 设置易信的appKey */
@@ -225,7 +272,7 @@
     [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Twitter appKey:@"fB5tvRpna1CKK97xZUslbxiet"  appSecret:@"YcbSvseLIwZ4hZg9YmgJPP5uWzd4zr6BpBKGZhf07zzh3oj62K" redirectURL:nil];
     
     /* 设置Facebook的appKey和UrlString */
-    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Facebook appKey:@"506027402887373"  appSecret:nil redirectURL:@"http://www.umeng.com/social"];
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Facebook appKey:@"506027402887373"  appSecret:nil redirectURL:nil];
     
     /* 设置Pinterest的appKey */
     [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Pinterest appKey:@"4864546872699668063"  appSecret:nil redirectURL:nil];
@@ -235,8 +282,8 @@
     
     /* vk的appkey */
     [[UMSocialManager defaultManager]  setPlaform:UMSocialPlatformType_VKontakte appKey:@"5786123" appSecret:nil redirectURL:nil];
+    
 }
-
 
 // Push 高级功能设置，如果使用"交互式"的通知(iOS 8.0 and later)，请参考下面函数注释部分的代码。
 - (void)setupPushAdvanceFunctionWithLaunchOptions:(NSDictionary *_Nullable)launchOptions

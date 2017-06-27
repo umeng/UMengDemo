@@ -1,0 +1,20 @@
+//
+//  PrefixHeader.pch
+//  UMengDemo
+//
+//  Created by 张军华 on 2017/5/31.
+//  Copyright © 2017年 UMeng. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+#ifdef UM_Swift
+#import "UMengDemo-Swift.h"
+//此处替换老版本的类UMSocialSwiftInterface
+#define UMSocialSwiftInterface UMShareSwiftInterface
+#endif
+
+#endif /* PrefixHeader_pch */

@@ -1,7 +1,7 @@
-* 更新组件化UShare SDK
-* QQ可获取union id（仅限有union id获取权限的appid）
+* 重构组件化UShare SDK
 * (近期更新)主流平台精简版SDK:
    微信精简版(缩减官方SDK体积99%)
    微博精简版(缩减官方SDK体积96%)
    QQ精简版(缩减官方SDK体积93%)
+   QQ可获取union id（需向QQ互联申请权限）
 * 修正部分问题，提高稳定性
