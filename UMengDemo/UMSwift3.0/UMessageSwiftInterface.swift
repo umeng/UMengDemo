@@ -29,9 +29,6 @@ class UMessageSwiftInterface: NSObject {
     }
     
     //--optional
-    static func setLocation(location:CLLocation){
-        UMessage.setLocation(location);
-    }
 
     static func setBadgeClear(value:Bool){
         UMessage.setBadgeClear(value);
@@ -41,9 +38,6 @@ class UMessageSwiftInterface: NSObject {
         UMessage.setAutoAlert(value);
     }
     
-    static func setUniqueID(uniqueId:String){
-        UMessage.setUniqueID(uniqueId);
-    }
     
     static func sendClickReportForRemoteNotification(userInfo:Dictionary<String,Any>){
         UMessage.sendClickReport(forRemoteNotification: userInfo);

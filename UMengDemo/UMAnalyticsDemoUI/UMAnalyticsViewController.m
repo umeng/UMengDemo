@@ -39,32 +39,44 @@
     eventAButton.titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:16];
     [self.view addSubview:eventAButton];
     
-    UIButton *errorButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [errorButton setFrame:CGRectMake(0, 120, [UMAnalyticsViewController getScreenWidth]/2-5, 40)];
-    [errorButton setBackgroundColor:[UIColor colorWithRed:141/255.0 green:166/255.0 blue:196/255.0 alpha:1.0]];
-    [errorButton.layer setCornerRadius:5.0];
-    [errorButton setTitle:@"error" forState:UIControlStateNormal];
-    [errorButton addTarget:self action:@selector(errorButtonClick) forControlEvents:UIControlEventTouchUpInside];
-    errorButton.titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:16];
-    [self.view addSubview:errorButton];
-    
     UIButton *signInButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [signInButton setFrame:CGRectMake([UMAnalyticsViewController getScreenWidth]/2+5, 120, [UMAnalyticsViewController getScreenWidth]/2-5, 40)];
+    [signInButton setFrame:CGRectMake(0, 120, [UMAnalyticsViewController getScreenWidth]/2-5, 40)];
     [signInButton setBackgroundColor:[UIColor colorWithRed:141/255.0 green:166/255.0 blue:196/255.0 alpha:1.0]];
     [signInButton.layer setCornerRadius:5.0];
     [signInButton setTitle:@"signIn" forState:UIControlStateNormal];
     [signInButton addTarget:self action:@selector(signInButtonClick) forControlEvents:UIControlEventTouchUpInside];
     signInButton.titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:16];
     [self.view addSubview:signInButton];
+
     
     UIButton *signOffButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [signOffButton setFrame:CGRectMake(0, 170, [UMAnalyticsViewController getScreenWidth]/2-5, 40)];
+    [signOffButton setFrame:CGRectMake([UMAnalyticsViewController getScreenWidth]/2+5, 120, [UMAnalyticsViewController getScreenWidth]/2-5, 40)];
     [signOffButton setBackgroundColor:[UIColor colorWithRed:141/255.0 green:166/255.0 blue:196/255.0 alpha:1.0]];
     [signOffButton.layer setCornerRadius:5.0];
     [signOffButton setTitle:@"signOff" forState:UIControlStateNormal];
     [signOffButton addTarget:self action:@selector(signOffButtonClick) forControlEvents:UIControlEventTouchUpInside];
     signOffButton.titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:16];
     [self.view addSubview:signOffButton];
+    
+    UIButton *exceptionButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [exceptionButton setFrame:CGRectMake(0, 170, [UMAnalyticsViewController getScreenWidth]/2-5, 40)];
+    [exceptionButton setBackgroundColor:[UIColor colorWithRed:141/255.0 green:166/255.0 blue:196/255.0 alpha:1.0]];
+    [exceptionButton.layer setCornerRadius:5.0];
+    [exceptionButton setTitle:@"exception" forState:UIControlStateNormal];
+    [exceptionButton addTarget:self action:@selector(exceptionButtonClick) forControlEvents:UIControlEventTouchUpInside];
+    exceptionButton.titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:16];
+    [self.view addSubview:exceptionButton];
+    
+    UIButton *natveErrorButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [natveErrorButton setFrame:CGRectMake([UMAnalyticsViewController getScreenWidth]/2+5, 170, [UMAnalyticsViewController getScreenWidth]/2-5, 40)];
+    [natveErrorButton setBackgroundColor:[UIColor colorWithRed:141/255.0 green:166/255.0 blue:196/255.0 alpha:1.0]];
+    [natveErrorButton.layer setCornerRadius:5.0];
+    [natveErrorButton setTitle:@"natveError" forState:UIControlStateNormal];
+    [natveErrorButton addTarget:self action:@selector(errorButtonClick) forControlEvents:UIControlEventTouchUpInside];
+    natveErrorButton.titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:16];
+    [self.view addSubview:natveErrorButton];
+    
+    
     
     UIButton *dplusButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [dplusButton setFrame:CGRectMake(0, [UMAnalyticsViewController getScreenHeight]-150, [UMAnalyticsViewController getScreenWidth], 40)];
@@ -98,11 +110,18 @@
 #endif
     
 }
+
 -(void)errorButtonClick{
-     NSArray *array = [NSArray array];
-    [array objectAtIndex:NSUIntegerMax];
-    
+    char *p = NULL;
+    char a[30] = "string(1)";
+    strcpy(p, a);
 }
+
+-(void)exceptionButtonClick{
+    NSArray *array = [NSArray array];
+    [array objectAtIndex:NSUIntegerMax];
+}
+
 -(void)signInButtonClick{
 #ifdef UM_Swift
     [UMAnalyticsSwiftInterface profileSignInWithPUIDWithPuid:@"umeng@456"];

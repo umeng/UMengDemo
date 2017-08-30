@@ -105,14 +105,6 @@ typedef void (^UMPlaunchFinishBlock)();
  */
 + (void)didReceiveRemoteNotification:(nullable NSDictionary *)userInfo;
 
-//--optional
-
-/** 开发者自行传入location
- @param location 当前location信息
- */
-+ (void)setLocation:(nullable CLLocation *)location;
-
-
 /** 设置是否允许SDK自动清空角标（默认开启）
  @param value 是否开启角标清空
  */
@@ -123,12 +115,6 @@ typedef void (^UMPlaunchFinishBlock)();
  @param value 是否开启弹出框
  */
 + (void)setAutoAlert:(BOOL)value;
-
-/** 设置设备的唯一ID，目前友盟这边设备的唯一ID是OpenUdid，如果你们可以采集到更合适的唯一ID，可以采用这个ID来替换OpenUdid
- @warning 用户可以设置uniqueId方便以后扩展，我们短时间内在服务区端任然会采取OpenUdid作为唯一标记。
- @param uniqueId 唯一ID名称
- */
-+ (void)setUniqueID:(nullable NSString *)uniqueId;
 
 /** 为某个消息发送点击事件
  @warning 请注意不要对同一个消息重复调用此方法，可能导致你的消息打开率飚升，此方法只在需要定制 Alert 框时调用

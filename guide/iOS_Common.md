@@ -22,6 +22,8 @@
 
      `libsqlite.tbd`  数据缓存
 
+     `SystemConfiguration.framework `  判断网络状态
+
 如下：
 
 ![Screen Shot 2017-03-07 at 6.25.12 PM](/Users/sanzhang/Desktop/Screen Shot 2017-03-07 at 6.25.12 PM.png)

@@ -12,6 +12,7 @@
 #import <UMPush/UMessage.h>
 #import <UserNotifications/UserNotifications.h>
 
+
 //Demo viewcontroller
 #import "UMSRootViewController.h"
 #import "UMessageViewController.h"
@@ -42,8 +43,7 @@
     [UMConfigure setLogEnabled:YES];    // debug: only for console log, must be remove in release version
     [UMConfigure initWithAppkey:UMENG_APPKEY channel:@"App Store"]; // required
 #endif
-    
-    
+
     // Analytics's setting
 //    [MobClick setAppVersion:XcodeAppVersion];   // optional:
 //  [MobClick setScenarioType:E_UM_GAME];       // optional: 仅适用于游戏场景，应用统计不用设置
