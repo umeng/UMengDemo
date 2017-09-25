@@ -982,7 +982,7 @@
 				TargetAttributes = {
 					A9C897DA1E6EB647000DE143 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = K7FM47A3M5;
+						DevelopmentTeam = 486K7NX823;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Push = {
@@ -1173,7 +1173,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = UMengDemo/UMengDemo.entitlements;
-				DEVELOPMENT_TEAM = K7FM47A3M5;
+				DEVELOPMENT_TEAM = 486K7NX823;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1227,10 +1227,10 @@
 					"$(PROJECT_DIR)/UMengDemo/UMComponents/UMShare/UMSocialSDKPlugin",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Umeng.UMSocial;
+				PRODUCT_BUNDLE_IDENTIFIER = com.UmengPlus.UMDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6e0df010-942e-40f9-b52e-0a68ca6746c4";
-				PROVISIONING_PROFILE_SPECIFIER = UMPush_component_dev;
+				PROVISIONING_PROFILE = "e5c7e4a9-7546-45f7-973f-8d90a99f2fb5";
+				PROVISIONING_PROFILE_SPECIFIER = UMengPlusDemo_dev;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/UMengDemo/UMSwift3.0/UMengDemo-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
@@ -1241,7 +1241,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = UMengDemo/UMengDemo.entitlements;
-				DEVELOPMENT_TEAM = K7FM47A3M5;
+				DEVELOPMENT_TEAM = 486K7NX823;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1294,10 +1294,10 @@
 					"$(PROJECT_DIR)/UMengDemo/UMComponents/UMShare/UMSocialSDKPlugin",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Umeng.UMSocial;
+				PRODUCT_BUNDLE_IDENTIFIER = com.UmengPlus.UMDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6e0df010-942e-40f9-b52e-0a68ca6746c4";
-				PROVISIONING_PROFILE_SPECIFIER = UMPush_component_dev;
+				PROVISIONING_PROFILE = "e5c7e4a9-7546-45f7-973f-8d90a99f2fb5";
+				PROVISIONING_PROFILE_SPECIFIER = UMengPlusDemo_dev;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/UMengDemo/UMSwift3.0/UMengDemo-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
