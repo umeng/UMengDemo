@@ -32,5 +32,4 @@
 + (NSString *)umidString;
 
 
-
 @end

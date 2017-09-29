@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		173DE4FE1F7E2455009DF911 /* UMErrorCatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 174529361F7E1CE200AB079C /* UMErrorCatch.framework */; };
 		17A1932C1E9E15900020F491 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17A1932B1E9E15900020F491 /* UserNotifications.framework */; };
 		17A193391E9E17F40020F491 /* UMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17A193371E9E17F40020F491 /* UMessageViewController.m */; };
 		17A1933A1E9E17F40020F491 /* UMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17A193381E9E17F40020F491 /* UMessageViewController.xib */; };
@@ -109,6 +110,7 @@
 
 /* Begin PBXFileReference section */
 		1700DB011E9E14B300E9AF25 /* UMengDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UMengDemo.entitlements; sourceTree = "<group>"; };
+		174529361F7E1CE200AB079C /* UMErrorCatch.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UMErrorCatch.framework; sourceTree = "<group>"; };
 		17A1932B1E9E15900020F491 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		17A193361E9E17F40020F491 /* UMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMessageViewController.h; sourceTree = "<group>"; };
 		17A193371E9E17F40020F491 /* UMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMessageViewController.m; sourceTree = "<group>"; };
@@ -381,6 +383,7 @@
 				6369E7BB1EFCEF1000F99460 /* libSocialAlipayShare.a in Frameworks */,
 				6369E7D31EFCEF1000F99460 /* libSocialPocket.a in Frameworks */,
 				6369E7E11EFCEF1000F99460 /* libSocialWeChat.a in Frameworks */,
+				173DE4FE1F7E2455009DF911 /* UMErrorCatch.framework in Frameworks */,
 				E59607DD1E9DC02500C9813C /* UMAnalytics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -943,6 +946,7 @@
 		E59607281E9DC02500C9813C /* UMComponents */ = {
 			isa = PBXGroup;
 			children = (
+				174529361F7E1CE200AB079C /* UMErrorCatch.framework */,
 				6369E70D1EFCEF1000F99460 /* UMShare */,
 				17F5CE401EA4C23000FF13AC /* UMPush.framework */,
 				E596072A1E9DC02500C9813C /* UMAnalytics.framework */,
@@ -1171,6 +1175,7 @@
 		A9C897F61E6EB647000DE143 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = UMengDemo/UMengDemo.entitlements;
 				DEVELOPMENT_TEAM = 486K7NX823;
@@ -1226,6 +1231,7 @@
 					"$(PROJECT_DIR)/UMengDemo/UMComponents/UMShare/SocialLibraries/YouDao",
 					"$(PROJECT_DIR)/UMengDemo/UMComponents/UMShare/UMSocialSDKPlugin",
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.UmengPlus.UMDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1239,6 +1245,7 @@
 		A9C897F71E6EB647000DE143 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = UMengDemo/UMengDemo.entitlements;
 				DEVELOPMENT_TEAM = 486K7NX823;

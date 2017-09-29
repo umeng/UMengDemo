@@ -10,6 +10,7 @@
 #import <UMAnalytics/MobClick.h>
 #import <UMShare/UMShare.h>
 #import <UMPush/UMessage.h>
+#import <UMErrorCatch/UMErrorCatch.h>
 #import <UserNotifications/UserNotifications.h>
 
 
@@ -43,7 +44,9 @@
     [UMConfigure setLogEnabled:YES];    // debug: only for console log, must be remove in release version
     [UMConfigure initWithAppkey:UMENG_APPKEY channel:@"App Store"]; // required
 #endif
-
+    //错误分析的库必须加在UMConfigure initWithAppkey，否则没法兼容UApp的excetion和singal的兼容
+    //调试模式此函数不起作用
+    [UMErrorCatch initErrorCatch];
     // Analytics's setting
 //    [MobClick setAppVersion:XcodeAppVersion];   // optional:
 //  [MobClick setScenarioType:E_UM_GAME];       // optional: 仅适用于游戏场景，应用统计不用设置
